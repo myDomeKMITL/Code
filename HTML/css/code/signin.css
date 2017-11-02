@@ -1,52 +1,78 @@
 body {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #eee;
-  }
-  
-  .form-signin {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-  }
-  .form-signin .form-signin-heading,
-  .form-signin .checkbox {
-    margin-bottom: 10px;
-  }
-  .form-signin .checkbox {
-    font-weight: 400;
-  }
-  .form-signin .checkbox .form-recovery {
-    color: #4285F4;
-    font-size: 12px;
-    text-decoration: none;
-    text-align: right;
-  }
-  .form-signin .form-control:focus {
-    z-index: 2;
-  }
-  .form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  .form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-
-.form-signin .group{
-	margin-bottom:20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: url('../../Picture/sky.jpg');
+  font-family: Tahoma, Geneva, sans-serif;
 }
 
-.form-signin .group .form-control {
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin-heading{
+  margin-bottom: 20px;
+  text-align: center;
+}
+.form-signin,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
   position: relative;
-  border:none;
-  border-radius:25px;
   box-sizing: border-box;
   height: auto;
-  padding:15px 20px;
+  padding: 10px;
   font-size: 16px;
-  /* background:rgba(255,255,255,.1); */
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input{
+  border-radius: 20px;
+  margin: 10px 0px;
+  border: 2px solid #999;
+}
+.form-signin input[type=text]:focus,
+.form-signin input[type=password]:focus{
+  border: 2px solid #000;
+  opacity: 0.9;
+}
+
+.form-signin input[type=text]{
+  background-color: white;
+  background-image: url('../../Picture/username2.png');
+  background-size: 30px 30px;
+  background-position: 8px 7px; 
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  opacity: 0.7;
+}
+.form-signin input[type=password]{
+  background-color: white;
+  background-image: url('../../Picture/password.png');
+  background-size: 30px 30px;
+  background-position: 7px 7px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  opacity: 0.7;
+}
+a{
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  text-shadow: 1px 1px #000;
+}
+a:hover{
+  text-decoration: none;
+  color: #77d5e6;
+}
+.picture{
+  position: relative;
+  left:-10%;
+  margin: auto;
+  background-repeat: no-repeat;
 }
