@@ -1,0 +1,52 @@
+body {
+    background-image: url('../../Picture/sky.jpg');
+    font-family: Tahoma;
+    margin:0;
+}
+  
+  .row .row {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+  [class*="col-"] {
+    padding-top: 1rem;
+    background-color: #000;
+  }
+  .space-bottom{
+      padding-bottom: 1rem;
+      text-align: center;
+      text-shadow: 1px 1px #000;
+      font-size: 16px;
+  }
+  .icon-bg{
+    background-image: url(../../Picture/stars.jpg);
+    background-size: 800px 600px;
+  }
+  #top {
+      background-image: url(../../Picture/banner.jpg);
+      background-size: 1600px 200px;
+  }
+  #top p.banner{
+    text-align: right;
+    text-shadow: 1px 1px #000;
+    font-size: 40px;
+    color: white;
+    position: relative;
+    right: 5%;
+    margin-bottom: -25px;
+  }
+  div a{
+    padding: 19px;
+    background-size: auto;
+    text-decoration: none;
+    color: white;
+  }
+  div a:hover{
+    color: #888;
+    text-decoration: none;
+  }
+  .information{
+    margin: 20px;
+    color: white;
+    background-color: #666;
+  }
