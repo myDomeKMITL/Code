@@ -1,16 +1,10 @@
-body {
-    background-image: url('../../Picture/sky.jpg');
-    font-family: Tahoma;
-    margin:0;
-}
-  
-  .row .row {
+.banner .row {
     margin-top: 2rem;
     margin-bottom: 0;
+    background-color: #000;
   }
   [class*="col-"] {
     padding-top: 1rem;
-    background-color: #000;
   }
   .space-bottom{
       padding-bottom: 1rem;
@@ -44,9 +38,4 @@ body {
   div a:hover{
     color: #888;
     text-decoration: none;
-  }
-  .information{
-    margin: 20px;
-    color: white;
-    background-color: #666;
   }
