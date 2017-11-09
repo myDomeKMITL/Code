@@ -13,12 +13,12 @@
       font-size: 16px;
   }
   .icon-bg{
-    background-image: url(../../Picture/stars.jpg);
-    background-size: 800px 600px;
+    background: url(../../Picture/stars.jpg) no-repeat;
+    background-size: cover;
   }
   #top {
-      background-image: url(../../Picture/banner.jpg);
-      background-size: 1600px 200px;
+      background: url(../../Picture/banner.jpg) no-repeat;
+      background-size: cover;
   }
   #top p.banner{
     text-align: right;
@@ -28,6 +28,14 @@
     position: relative;
     right: 5%;
     margin-bottom: -25px;
+  }
+  #top p.left{
+    text-shadow: 1px 1px #000;
+    font-size: 40px;
+    color: white;
+    position: absolute;
+    left: 5%;
+    top: 12%;
   }
   div a{
     padding: 19px;

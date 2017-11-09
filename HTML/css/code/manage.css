@@ -1,7 +1,8 @@
 body {
-    background-image: url('../../Picture/sky.jpg');
-    font-family: Tahoma;
-    margin:0;
+  background: url('../../Picture/sky.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Tahoma;
+  margin:0;
 }
   .information{
     margin: 20px;
