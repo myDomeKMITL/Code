@@ -44,6 +44,6 @@
     color: white;
   }
   div a:hover{
-    color: #888;
+    color: rgb(0, 217, 255);
     text-decoration: none;
   }

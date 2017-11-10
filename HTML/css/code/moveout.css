@@ -1,0 +1,14 @@
+body {
+    background: url('../../Picture/sky.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Tahoma;
+    margin:0;
+  }
+    .information{
+      margin: 20px;
+      color: white;
+      background-color: rgba(102, 102, 102, 0.5);
+      text-align: center;
+      border-radius: 20px;
+      padding: 20px;
+    }
