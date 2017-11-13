@@ -47,3 +47,10 @@
     color: rgb(0, 217, 255);
     text-decoration: none;
   }
+
+  .fix-top{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 105%;
+  }
