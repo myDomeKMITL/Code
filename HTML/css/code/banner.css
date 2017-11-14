@@ -38,7 +38,8 @@
     top: 12%;
   }
   div a{
-    padding: 19px;
+    display: block;
+    /* padding: 19px; */
     background-size: auto;
     text-decoration: none;
     color: white;
@@ -53,6 +54,7 @@
     position: fixed;
     top: 0;
     width: 105%;
+    z-index: 10;
   }
 
   main{
