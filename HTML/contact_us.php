@@ -9,6 +9,8 @@
         <title>Contact Us</title>
     </head>
     <body>
+ 
+    
         <nav class="row fix-top">
             <div class="col-md-2 icon-bg">
                 <img src="Picture/icon.png" alt="logo" width="100px" height="100px" style="padding: 0 auto; position: center; display: block; margin: auto;">
@@ -25,6 +27,24 @@
         <main role="main">
             <div class="row">
                 <div class="container information">
+					<?php
+                        $host = "localhost";
+                        $user = "root";
+                        $pass = "";
+                        $dbname = "myDorm";
+                        
+                        $mysqli = new mysqli($host,$user,$pass,$dbname);
+
+                        $sql = "SELECT `telephone`, `address` FROM `admin` WHERE 1";
+                        // $result = mysql_query($sql);
+                        $result =  $mysqli->query($sql);
+                        
+                        while ($w = mysqli_fetch_array($result)){
+                            $Tel = $w[0];
+                            $Address = $w[1];
+                        }
+                        mysqli_close($mysqli);
+                    ?>
                     <h1>Contact us</h1>
                     <div class="row">
                         <div class="col-md-4">
@@ -32,7 +52,7 @@
                         </div>
                         <div class="col-md-8" style="text-align:left; margin-top:20px;">
                             <span>Tel: </span>
-                            <span>database</span>
+                            <?php echo $Tel; ?>
                         </div>
                     </div>
                     

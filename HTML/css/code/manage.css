@@ -31,3 +31,33 @@ body {
   input["type:number"]{
     width:100%; margin-bottom:10px; border-radius:5px;
   }
+
+  table, th, td {
+    border-collapse: collapse;
+    padding:20px;
+    margin:5%;
+    border: 2px solid #333;
+  }
+  #room{
+    width:80%;
+    position:relative;
+    left:5%;
+    color: black;
+  }
+  #room th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: rgb(8, 179, 185);
+    color: white;
+  }
+  #room tr:nth-child(even){background-color: #cecece;}
+  #room tr:nth-child(odd){background-color: #ffffff;}
+  #room a{
+    color:black;
+  }
+  #room a:hover{
+    color: rgb(118, 219, 255);
+  }
+  #room tr:hover{
+    background-color: rgb(105, 105, 105);
+  }
