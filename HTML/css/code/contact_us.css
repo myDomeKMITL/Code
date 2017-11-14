@@ -12,3 +12,41 @@ body {
     text-align: center;
     border-radius: 20px;
   }
+
+  .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  input{
+    border-radius: 20px;
+    margin: 10px 0px;
+    border: 2px solid #999;
+    padding: 10px 10px 10px 50px;
+    width: 40%;
+    opacity: 0.7;
+  }
+  input:focus{
+    border: 2px solid #000;
+    opacity: 0.9;
+  }
+  div.space{
+    margin-top: 20px;
+  }
+
+  input[id=telephone]{
+    background-image: url('../../Picture/tel.png');
+    background-size: 30px 30px;
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+  }
+
+  input[id=address]{
+    background-image: url('../../Picture/add.png');
+    background-size: 30px 30px;
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+  }

@@ -18,8 +18,8 @@
             <div id="top" class="col-md-10 banner">
                 <p class="banner">@ADMIN</p>
                 <div class="row">
-                    <div class="col-md-4 space-bottom"><a href="main_admin.html">Main Menu</a></div>
-                    <div class="col-md-4 space-bottom"><a href="Manage_Room.html">Manage Room</a></div>
+                    <div class="col-md-4 space-bottom"><a href="main_admin.php">Main Menu</a></div>
+                    <div class="col-md-4 space-bottom"><a href="manage.php">Manage Room</a></div>
                     <div class="col-md-4 space-bottom"><a href="contact_us.php">Contact Us</a></div>
                 </div>
             </div>
@@ -28,7 +28,20 @@
             <div class="row">
                 <div class="container information">
                     <h1>Contact us</h1>
-                    <input type="submit">
+                    <form action="main_admin.html" method="GET">
+                        <div class="space">
+                            <label for="inputTel" class="sr-only">Telephone</label>
+                            <input type="text" id="telephone" class="form_control" placeholder="Telephone Number" required autofocus>
+                        </div>
+                        <div class="space">
+                            <label for="inputAdd" class="sr-only">Address</label>
+                            <input type="text" id="address" class="form_control" placeholder="Address" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-2"><button class="btn btn-lg btn-primary btn-block" style="margin-top:10px" type="submit">Confirm</button></div>
+                            <div class="col-md-5"></div>
+                    </form>
                 </div>
             </div>
         </main>

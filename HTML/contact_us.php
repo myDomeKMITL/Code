@@ -18,9 +18,9 @@
             <div id="top" class="col-md-10 banner">
                 <p class="banner">@ADMIN</p>
                 <div class="row">
-                    <div class="col-md-4 space-bottom"><a href="main_admin.html">Main Menu</a></div>
-                    <div class="col-md-4 space-bottom"><a href="Manage_Room.html">Manage Room</a></div>
-                    <div class="col-md-4 space-bottom"><a href="contact_us.html">Contact Us</a></div>
+                    <div class="col-md-4 space-bottom"><a href="main_admin.php">Main Menu</a></div>
+                    <div class="col-md-4 space-bottom"><a href="manage.php">Manage Room</a></div>
+                    <div class="col-md-4 space-bottom"><a href="contact_us.php">Contact Us</a></div>
                 </div>
             </div>
         </nav>
@@ -36,7 +36,6 @@
                         $mysqli = new mysqli($host,$user,$pass,$dbname);
 
                         $sql = "SELECT `telephone`, `address` FROM `admin` WHERE 1";
-                        // $result = mysql_query($sql);
                         $result =  $mysqli->query($sql);
                         
                         while ($w = mysqli_fetch_array($result)){
@@ -45,24 +44,28 @@
                         }
                         mysqli_close($mysqli);
                     ?>
-                    <h1>Contact us</h1>
                     <div class="row">
-                        <div class="col-md-4">
-                            <img src="Picture/phone-call.png" style="position: absolute; right:2%; height:70px; width:70px;">
-                        </div>
-                        <div class="col-md-8" style="text-align:left; margin-top:20px;">
-                            <span>Tel: </span>
-                            <?php echo $Tel; ?>
-                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8"><h1>Contact us</h1></div>
+                        <div class="col-md-2"><a href="admin_edit_contact.php">edit?</a></div>
                     </div>
                     
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="Picture/phone-call.png" style="position: absolute; right:2%; height:70px; width:70px;">
+                        </div>
+                        <div class="col-md-9" style="text-align:left; margin-top:20px;">
+                            <span>Tel: </span>
+                            <span><?php echo $Tel; ?></span>
+                        </div>
+                    </div>
                     <div class="row" style="margin: 50px 0px">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <img src="Picture/village.png" style="position: absolute; right:2%; height:70px; width:70px;">
                         </div>
-                        <div class="col-md-8" style="text-align:left; margin-top:20px;">
+                        <div class="col-md-9" style="text-align:left; margin-top:20px;">
                             <span>Address: </span>
-                            <span>database</span>
+                            <span><?php echo $Address; ?></span>
                         </div>
                     </div>
                 </div>
