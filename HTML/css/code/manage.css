@@ -50,14 +50,33 @@ body {
     background-color: rgb(8, 179, 185);
     color: white;
   }
-  #room tr:nth-child(even){background-color: #cecece;}
-  #room tr:nth-child(odd){background-color: #ffffff;}
+  #room tr:nth-child(even), tr:nth-child(even) button{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    background-color: #cecece;
+  }
+  #room tr:nth-child(odd), tr:nth-child(odd) button{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    background-color: #ffffff;
+  }
   #room a{
     color:black;
   }
-  #room a:hover{
-    color: rgb(118, 219, 255);
+  #room button:hover{
+    color: #fff;
+    background-color: rgb(14, 145, 150);
   }
   #room tr:hover{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
     background-color: rgb(105, 105, 105);
+    color: white;
+  }
+  button{
+    width:100%;
+  }
+  tr:hover button{
+    background-color: rgb(8, 179, 185);
+    color: #fff;
   }

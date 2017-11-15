@@ -45,6 +45,7 @@
                         }
                         mysqli_close($mysqli);
                     ?>
+                    <form action="manage_room.php" method="GET">
                     <table id="room">
                         <tr>
                             <th>Room</th>
@@ -53,79 +54,43 @@
                             <th>Contract</th>
                         </tr>
                         <tr>
-                            <td><a href="#">101</a></td>
+                            <td><button class="btn btn-hidden" type="submit" name="Room" value="1101">101</button></td>
                             <td><?php echo $total[0] ?></td>
                             <td><?php echo $renter[0] ?></td>
                             <td><?php echo $contract[0] ?></td>
                         </tr>
                         <tr>
-                            <td><a href="#">102</a></td>
+                            <td><button class="btn btn-hidden" type="submit" name="Room" value="1102">102</button></td>
                             <td><?php echo $total[1] ?></td>
                             <td><?php echo $renter[1] ?></td>
                             <td><?php echo $contract[1] ?></td>
                         </tr>
                         <tr>
-                            <td><a href="#">103</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
+                            <td><button class="btn btn-hidden" type="submit" name="Room" value="1103">103</button></td>
+                            <td><?php echo $total[2] ?></td>
+                            <td><?php echo $renter[2] ?></td>
+                            <td><?php echo $contract[2] ?></td>
                         </tr>
                         <tr>
-                            <td><a href="#">104</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
+                            <td><button class="btn btn-hidden" type="submit" name="Room" value="1104">104</button></td>
+                            <td><?php echo $total[3] ?></td>
+                            <td><?php echo $renter[3] ?></td>
+                            <td><?php echo $contract[3] ?></td>
                         </tr>
                         <tr>
-                            <td><a href="#">105</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
+                            <td><button class="btn btn-hidden" type="submit" name="Room" value="1105">105</button></td>
+                            <td><?php echo $total[4] ?></td>
+                            <td><?php echo $renter[4] ?></td>
+                            <td><?php echo $contract[4] ?></td>
                         </tr>
                         <tr>
-                            <td><a href="#">106</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">201</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">202</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">203</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">204</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">205</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">206</a></td>
-                            <td>database</td>
-                            <td>database</td>
-                            <td>database</td>
+                            <td><button class="btn btn-hidden" type="submit" name="Room" value="1106">106</button></td>
+                            <td><?php echo $total[5] ?></td>
+                            <td><?php echo $renter[5] ?></td>
+                            <td><?php echo $contract[5] ?></td>
                         </tr>
                     </table>
-                    
+                    </form>
                 </div>
             </div>
         </main>

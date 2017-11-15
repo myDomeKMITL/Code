@@ -10,7 +10,6 @@
     </head>
     <body>
  
-    
         <nav class="row fix-top">
             <div class="col-md-2 icon-bg">
                 <img src="Picture/icon.png" alt="logo" width="100px" height="100px" style="padding: 0 auto; position: center; display: block; margin: auto;">
@@ -28,14 +27,14 @@
             <div class="row">
                 <div class="container information">
                     <h1>Contact us</h1>
-                    <form action="main_admin.html" method="GET">
+                    <form action="contactControl.php" method="GET">
                         <div class="space">
                             <label for="inputTel" class="sr-only">Telephone</label>
-                            <input type="text" id="telephone" class="form_control" placeholder="Telephone Number" required autofocus>
+                            <input type="text" id="telephone" name="telephone" class="form_control" placeholder="Telephone Number" required autofocus>
                         </div>
                         <div class="space">
                             <label for="inputAdd" class="sr-only">Address</label>
-                            <input type="text" id="address" class="form_control" placeholder="Address" required>
+                            <input type="text" id="address" name="address" class="form_control" placeholder="Address" required>
                         </div>
                         <div class="row">
                             <div class="col-md-5"></div>
