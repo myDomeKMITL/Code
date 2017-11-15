@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2017 at 07:45 PM
+-- Generation Time: Nov 15, 2017 at 10:26 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`telephone`, `address`, `electricRate`, `waterRate`) VALUES
-('081-234-5678', '123/456 Charongkrung Rd., Ladkrabang, Bangkok, Thailand 10520', 8, 18);
+('084-644-8399', '123/456 eiei, Bangkok, Thailand 10400', 8, 18);
 
 -- --------------------------------------------------------
 
@@ -61,8 +61,12 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`roomID`, `userID`, `billIDPresent`, `billIDLast`, `price`) VALUES
-('1101', '0001', '00013', '00001', 4500),
-('1102', '0002', '00014', '00002', 4500);
+('1101', '0001', '00007', '00001', 4500),
+('1102', '0002', '00008', '00002', 4500),
+('1103', '0003', '00009', '00003', 5000),
+('1104', '0004', '00010', '00004', 5000),
+('1105', '0005', '00011', '00005', 5000),
+('1106', '0006', '00012', '00006', 5000);
 
 -- --------------------------------------------------------
 
@@ -89,7 +93,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userID`, `username`, `password`, `name`, `nickname`, `personalID`, `address`, `contract`, `total`, `picture`) VALUES
 ('0001', 'titlez', 'ilovese', 'Jeerakitti Niamlarp', 'Title', '1234567890123', '132/36 Rama XI rd., Samsen-Nai, Phayathai, Bangkok, Thailand 10400', '2018-08-31', 5336, 'url'),
-('0002', 'mormix', 'ilikese', 'Tuchchapol Tuanghirunvimon', 'Mix', '3210987654321', '24 soi petkasem 62/1 bangkae bangkok 10160', '2018-06-30', 0, 'url');
+('0002', 'mormix', 'ilikese', 'Tuchchapol Tuanghirunvimon', 'Mix', '3210987654321', '24 soi petkasem 62/1 bangkae bangkok 10160', '2018-06-30', 0, 'url'),
+('0003', 'mew_maro', 'lazygirl', 'Mew Maro', 'Mew', '1092355555000', 'Sapran loi', '2018-02-28', 8900, 'url'),
+('0004', 'nut_eieiza', 'javaboss', 'Nut TheJavaBoy', 'Nut', '1111111111111', 'ESL', '2018-03-31', 6320, 'url'),
+('0005', 'meenza', 'meeneiei', 'Meen Eiei', 'Meen', '2222222222222', 'Mai roo ah', '2018-03-31', 0, 'url'),
+('0006', 'monandchin', 'cinnamon', 'Mon Chin', 'Cinnamon', '5555555555555', 'Make', '2018-01-31', 5832, 'url');
 
 --
 -- Indexes for dumped tables
