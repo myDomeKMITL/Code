@@ -1,26 +1,37 @@
 <?php
     $roomid = $_GET['Room'];
-    $room =  $roomid[1];
+    $electricQuan = $_GET['elecQuan'];
+    $waterQuan = $_GET['waterQuan'];
+
     $host = "localhost";
     $user = "root";
     $pass = "";
     $dbname = "myDorm";
     
     $mysqli = new mysqli($host,$user,$pass,$dbname);
-
-    $sql = "SELECT `billIDPresent`, `billIDLast`, `price` FROM `room` WHERE roomID = 1101";
+    //Room
+    $sql = "SELECT `userID`, `price` FROM `room` WHERE roomID = '".$roomid."'";
     $result =  $mysqli->query($sql);
-    
     while ($w = mysqli_fetch_array($result)){
-        $billPresent = $w[0];
-        $billLast = $w[1];
-        $roomPrice = $w[2];
+        $userID = $w[0];
+        $price = $w[1];
     }
-    echo $room;
-    mysqli_close($mysqli);
+    //Admin
+    $sql = "SELECT `electricRate`, `waterRate` FROM `admin` WHERE 1";
+    $result =  $mysqli->query($sql);
+    while ($w = mysqli_fetch_array($result)){
+        $electricRate = $w[0];
+        $waterRate = $w[1];
+    }
+    $total = ($electricQuan*$electricRate)+($waterRate*$waterQuan)+$price;
+    //User
+    $sql = "UPDATE `user` SET `total`='".$total."' WHERE `userID` = '".$userID."'";
+    $result = $mysqli->query($sql);
+    //Bill
+    $sql = "UPDATE `bill` SET `waterNow` = '".$waterQuan."',
+    `electricNow` = '".$electricQuan."' WHERE `roomID` = '".$roomid."'";
+    $result = $mysqli->query($sql);
 
-    echo $billLast;
-    echo $billPresent;
-    echo $roomPrice;
-    
+    mysqli_close($mysqli);
+    header("Location: manage.php");
 ?>

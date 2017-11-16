@@ -24,6 +24,22 @@
         </nav>
         <?php
             $roomid = $_GET['Room'];
+            $page = $_GET['page'];
+
+            function formatMonth($month){
+                if($month == 1) return "January";
+                elseif($month == 2) return "February";
+                elseif($month == 3) return "March";
+                elseif($month == 4) return "April";
+                elseif($month == 5) return "May";
+                elseif($month == 6) return "June";
+                elseif($month == 7) return "July";
+                elseif($month == 8) return "August";
+                elseif($month == 9) return "September";
+                elseif($month == 10) return "October";
+                elseif($month == 11) return "November";
+                else return "December";
+            }
 
             $host = "localhost";
             $user = "root";
@@ -31,14 +47,59 @@
             $dbname = "myDorm";
 
             $mysqli = new mysqli($host,$user,$pass,$dbname);
-
-            $sql = "SELECT `billIDPresent`, `billIDLast`, `price` FROM `room` WHERE roomID = $roomid";
+            //roomID
+            $sql = "SELECT `price`, `userID` FROM `room` WHERE roomID = $roomid";
             $result =  $mysqli->query($sql);
-
             while ($w = mysqli_fetch_array($result)){
-                $billPresent = $w[0];
-                $billLast = $w[1];
-                $roomPrice = $w[2];
+                $roomPrice = $w[0];
+                $userID = $w[1];
+            }
+            $room = $roomid[1].$roomid[2].$roomid[3];
+            //user
+            $sql = "SELECT `name`, `nickname`, `personalID`, `address`, `picture` FROM `user` WHERE userID = $userID";
+            $result = $mysqli->query($sql);
+            while($w = mysqli_fetch_array($result)){
+                $name = $w[0];
+                $nickname = $w[1];
+                $personalID = $w[2];
+                $address = $w[3];
+                $picture = $w[4];
+            }
+            //billID
+            $sql = "SELECT `waterNow`, `waterPrevious`, `waterLastest`,
+            `electricNow`, `electricPrevious`, `electricLastest` FROM `bill` WHERE roomID = $roomid";
+            $result =  $mysqli->query($sql);
+            while ($w = mysqli_fetch_array($result)){
+                $waterNow = $w[0];
+                $waterPrevious = $w[1];
+                $waterLastest = $w[2];
+                $electricNow = $w[3];
+                $electricPrevious = $w[4];
+                $electricLastest = $w[5];
+            }
+            //admin
+            $sql = "SELECT `electricRate`, `waterRate` FROM `admin` WHERE 1";
+            $result =  $mysqli->query($sql);
+            while ($w = mysqli_fetch_array($result)){
+                $electricRate = $w[0];
+                $waterRate = $w[1];
+            }
+            if($page == 0){
+                $electric = $electricNow;
+                $water = $waterNow;
+                $month = formatMonth(date("m"))."-".date("y");
+            }
+            elseif($page == 1){
+                $electric = $electricPrevious;
+                $water = $waterPrevious;
+                $d=strtotime("-1 Months");
+                $month = formatMonth(date("m",$d))."-".date("y");
+            }
+            else{
+                $electric = $electricLastest;
+                $water = $waterLastest;
+                $d=strtotime("-2 Months");
+                $month = formatMonth(date("m",$d))."-".date("y");
             }
             $room = $roomid[1].$roomid[2].$roomid[3];
             mysqli_close($mysqli);
@@ -52,8 +113,54 @@
             <div class="row">
                 <div class="container information">
                     <h1 style="margin-top:10px">Room Receipt</h1>
-                    <p>This month</p>
-                    <form>
+                    <?php if($page==0){ ?>
+                        <form action="manage_room.php">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-1">
+                                <input type="hidden" name="page" value="1"></input>
+                                <button class="btn btn-primary" name="Room" value="<?php echo $roomid ?>" type="submit"> < </button>
+                            </div>
+                            <div class="col-md-2"><p style="padding-top:7px;"><?php echo $month ?></p></div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        </form>
+                    <?php }elseif ($page==1){ ?>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-1">
+                            <form action="manage_room.php" action="GET">
+                                <input type="hidden" name="page" value="2"></input>
+                                <button class="btn btn-primary" name="Room" value="<?php echo $roomid ?>" type="submit"> < </button>
+                            </form>
+                            </div>
+                            <div class="col-md-2"><p style="padding-top:7px;"><?php echo $month ?></p></div>
+                            <div class="col-md-1">
+                            <form action="manage_room.php" action="GET">
+                                <input type="hidden" name="page" value="0"></input>
+                                <button class="btn btn-primary" name="Room" value="<?php echo $roomid ?>" type="submit"> > </button>
+                            </form>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    <?php }else{ ?>
+                        <form action="manage_room.php">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2"><p style="padding-top:7px;"><?php echo $month ?></p></div>
+                            <div class="col-md-1">
+                                <input type="hidden" name="page" value="1"></input>
+                                <button class="btn btn-primary" name="Room" value="<?php echo $roomid ?>" type="submit"> > </button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        </form>
+                    <?php }
+                        if($page == 0){
+                    ?>
+                    <form action="roomControl.php" method="GET">
                     <div class="row">
                         <div class="col-sm-6">
                             <p>Description</p>
@@ -64,41 +171,73 @@
                         <div class="col-sm-2">
                             <p>Quantity</p>
                             <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="quantity" value="1" disabled>
-                            <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="quantity" min="0" placeholder="0">
-                            <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="quantity" min="0" placeholder="0">
+                            <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="elecQuan" min="0" placeholder="<?php echo $electric; ?>" required>
+                            <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="waterQuan" min="0" placeholder="<?php echo $water; ?>" required>
                         </div>
                         <div class="col-sm-2">
                             <p>Price</p>
-                            <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="rate" value="<?php echo $roomPrice?>" disabled>
-                            <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="rate" min="0" value="8" disabled>
-                            <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="rate" min="0" value="18" disabled>
-                            <a href="#link">edit?</a>
+                            <p><?php echo $roomPrice ?></p>
+                            <p><?php echo $electricRate ?></p>
+                            <p><?php echo $waterRate?></p>
+                            <!-- <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="rate" value="<?php echo $roomPrice?>" disabled>
+                            <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="rate" min="0" value="<?php echo $electricRate?>" disabled>
+                            <input style="width:100%; margin-bottom:10px; border-radius:5px;" type="number" name="rate" min="0" value="<?php echo $waterRate?>" disabled> -->
+                            <!-- <a href="rate_edit.php">edit?</a> -->
                         </div>
                         <div class="col-sm-2">
                             <p>Total</p>
-                            <p id="price1"></p>
-                            <p id="price2"></p>
-                            <p id="price3"></p>
-                            <p id="total"></p>
-                            <script>
-                                document.getElementById("price1").innerHTML = document.getElementsByName("rate")[0].value*document.getElementsByName("quantity")[0].value;
-                                document.getElementById("price2").innerHTML = document.getElementsByName("rate")[1].value*document.getElementsByName("quantity")[1].value;
-                                document.getElementById("price3").innerHTML = document.getElementsByName("rate")[2].value*document.getElementsByName("quantity")[2].value;
-                                document.getElementById("total").innerHTML = 
-                                (document.getElementsByName("rate")[0].value*document.getElementsByName("quantity")[0].value)+
-                                (document.getElementsByName("rate")[1].value*document.getElementsByName("quantity")[1].value)+
-                                (document.getElementsByName("rate")[2].value*document.getElementsByName("quantity")[2].value);
-                            </script>
+                            <p><?php echo $roomPrice?></p>
+                            <p><?php echo $electricSum = $electricRate*$electric?></p>
+                            <p><?php echo $waterSum = $waterRate*$water?></p>
+                            <p><?php echo $total = $roomPrice+$electricSum+$waterSum?></p>
                         </div>
                     </div>
+                    <input type="hidden" name="Room" value="<?php echo $roomid ?>"></input>
                     <button class="btn btn-primary" style="margin-bottom:1rem; width: 20%;" type="submit">Submit</button>
                     </form>
+                    <?php }else{ ?>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p>Description</p>
+                            <p><i>Monthly Rate</i></p>
+                            <p><i>Electric Service Rate</i></p>
+                            <p><i>Water Service Rate</i></p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p>Quantity</p>
+                            <p>1</p>
+                            <p><?php echo $electric; ?></p>
+                            <p><?php echo $water; ?></p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p>Price</p>
+                            <p><?php echo $roomPrice?></p>
+                            <p><?php echo $electricRate?></p>
+                            <p><?php echo $waterRate?></p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p>Total</p>
+                            <p><?php echo $roomPrice?></p>
+                            <p><?php echo $electricSum = $electricRate*$electric?></p>
+                            <p><?php echo $waterSum = $waterRate*$water?></p>
+                            <p><?php echo $total = $roomPrice+$electricSum+$waterSum?></p>
+                        </div>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="row">
                 <div class="container information">
                     <h1>Profile</h1>
-                    <p>name, nickname, personal ID, Birth Day, Address and Picture from database</p>
+                    <div class="row">
+                    <div class="col-md-5"><img src="Picture/user.png"></div>
+                    <div class="col-md-7" style="padding-top:60px; text-align: left;"> 
+                        <p>Name: <?php echo $name ?></p>
+                        <p>Nickname: <?php echo $nickname ?></p>
+                        <p>Personal ID: <?php echo $personalID ?></p>
+                        <p>Address: <?php echo $address ?></p>
+                    </div>
+                </div>
                 </div>
             </div>
         </main>

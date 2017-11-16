@@ -24,7 +24,7 @@
         </nav>
         <main role="main">
             <div class="row">
-                <div class="container information" style="padding: 20px;">
+                <div class="container information">
                     <h1>Manage Room</h1>
                     <?php
                         $host = "localhost";
@@ -46,10 +46,11 @@
                         mysqli_close($mysqli);
                     ?>
                     <form action="manage_room.php" method="GET">
+                    <input type="hidden" name="page" value="0"></input>
                     <table id="room">
                         <tr>
                             <th>Room</th>
-                            <th>Paid</th>
+                            <th>Total</th>
                             <th>Renter</th>
                             <th>Contract</th>
                         </tr>
