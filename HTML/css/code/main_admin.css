@@ -99,3 +99,19 @@ input.ipt:focus{
   background-color:rgb(255, 255, 255);
   border: 2px solid #333;
 }
+button#check{
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  border:none;
+  color: black;
+  
+}
+
+tr:hover button#check{
+  color: rgb(255, 255, 255);
+  background-color: rgb(8, 179, 185);
+}
+
+tr:hover button#check:hover{
+  background-color: rgb(14, 145, 150);
+}

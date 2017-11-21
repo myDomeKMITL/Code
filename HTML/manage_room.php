@@ -67,7 +67,7 @@
             }
             //billID
             $sql = "SELECT `waterNow`, `waterPrevious`, `waterLastest`,
-            `electricNow`, `electricPrevious`, `electricLastest` FROM `bill` WHERE roomID = $roomid";
+            `electricNow`, `electricPrevious`, `electricLastest`, `currentMonth` FROM `bill` WHERE roomID = $roomid";
             $result =  $mysqli->query($sql);
             while ($w = mysqli_fetch_array($result)){
                 $waterNow = $w[0];
@@ -76,6 +76,7 @@
                 $electricNow = $w[3];
                 $electricPrevious = $w[4];
                 $electricLastest = $w[5];
+                $monthDB = $w[6];
             }
             //admin
             $sql = "SELECT `electricRate`, `waterRate` FROM `admin` WHERE 1";
@@ -87,19 +88,17 @@
             if($page == 0){
                 $electric = $electricNow;
                 $water = $waterNow;
-                $month = formatMonth(date("m"))."-".date("y");
+                $month = formatMonth($monthDB);
             }
             elseif($page == 1){
                 $electric = $electricPrevious;
                 $water = $waterPrevious;
-                $d=strtotime("-1 Months");
-                $month = formatMonth(date("m",$d))."-".date("y");
+                $month = formatMonth($monthDB-1);
             }
             else{
                 $electric = $electricLastest;
                 $water = $waterLastest;
-                $d=strtotime("-2 Months");
-                $month = formatMonth(date("m",$d))."-".date("y");
+                $month = formatMonth($monthDB-2);
             }
             $room = $roomid[1].$roomid[2].$roomid[3];
             mysqli_close($mysqli);
@@ -192,10 +191,11 @@
                             <p><?php echo $total = $roomPrice+$electricSum+$waterSum?></p>
                         </div>
                     </div>
+                    <?php if(date("d") >= 20 && date("d") <= 31 && $monthDB == date("m")) {?>
                     <input type="hidden" name="Room" value="<?php echo $roomid ?>"></input>
                     <button class="btn btn-primary" style="margin-bottom:1rem; width: 20%;" type="submit">Submit</button>
                     </form>
-                    <?php }else{ ?>
+                    <?php }}else{ ?>
                     <div class="row">
                         <div class="col-sm-6">
                             <p>Description</p>

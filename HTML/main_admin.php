@@ -43,7 +43,7 @@
                         $dbname = "myDorm";
                         
                         $mysqli = new mysqli($host,$user,$pass,$dbname);
-                        $sql = "SELECT * FROM `announcement` ORDER BY `date` DESC LIMIT 3";
+                        $sql = "SELECT * FROM `announcement`";
                         $result =  $mysqli->query($sql);
                         $i = 0;
                         while ($w = mysqli_fetch_array($result)){
@@ -57,21 +57,50 @@
                         </tr>
                     <?php
                             $i++;}
-                        mysqli_close($mysqli);
                     ?>
                     </table>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="container information">
                     <h1>Overdue</h1>
                     <p>e Mew backend right here!!</p>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="container information">
                     <h1>Problem Appealed</h1>
-                    <p>e Mew backend right here!!</p>
+                    <table id="Announce">
+                        <tr>
+                            <th>Check</th>
+                            <th>Date</th>
+                            <th>Room</th>
+                            <th>Message</th>
+                        </tr>
+                        <?php
+                        $sql = "SELECT * FROM `appeal` ORDER BY `date`";
+                        $result =  $mysqli->query($sql);
+                        $i = 0;
+                        while ($w = mysqli_fetch_array($result)){
+                            $date[$i] = $w[0];
+                            $type[$i] = $w[1];
+                            $message[$i] = $w[2];?>
+                        <tr style="text-align:center">
+                            <form action="appealControl.php">
+                            <td><button id="check" class="btn btn-primary" type="submit" name="check" value=$i>Done</button></td>
+                            <td><?php echo $date[$i] ?></td>
+                            <td><?php echo $type[$i] ?></td>
+                            <td><?php echo $message[$i] ?></td>
+                            <!-- <input type="hidden" name="date" value="$date[$i]"></input>
+                            <input type="hidden" name="type" value="$type[$i]"></input>
+                            <input type="hidden" name="message" value="$date[$i]"></input> -->
+                            </form>
+                        </tr>
+                    <?php
+                            $i++;}
+                        mysqli_close($mysqli);
+                    ?>
+                    </table>
                 </div>
             </div>
         </main>

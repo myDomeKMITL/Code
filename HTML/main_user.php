@@ -50,7 +50,7 @@
             $mysqli = new mysqli($host,$user,$pass,$dbname);
             //bill
             $sql = "SELECT `waterNow`, `electricNow`,`waterPrevious`,`electricPrevious`,
-            `waterLastest`, `electricLastest` FROM `bill` WHERE `roomID` = '".$_SESSION['roomID']."'";
+            `waterLastest`, `electricLastest`, `currentMonth` FROM `bill` WHERE `roomID` = '".$_SESSION['roomID']."'";
             $result =  $mysqli->query($sql);
             while ($w = mysqli_fetch_array($result)){
                 $water[0] = $w[0];
@@ -59,6 +59,7 @@
                 $elec[1] = $w[3];
                 $water[2] = $w[4];
                 $elec[2] = $w[5];
+                $monthDB = $w[6];
             }
             //admin
             $sql = "SELECT `electricRate`, `waterRate` FROM `admin` WHERE 1";
@@ -68,31 +69,30 @@
                 $waterRate = $w[1];
             }
             //user
-            $sql = "SELECT `name`, `nickname`, `personalID`, `address` FROM `user` WHERE `userID` = '".$_SESSION["userID"]."'";
+            $sql = "SELECT `name`, `nickname`, `personalID`, `address`, `total` FROM `user` WHERE `userID` = '".$_SESSION["userID"]."'";
             $result =  $mysqli->query($sql);
             while ($w = mysqli_fetch_array($result)){
                 $name = $w[0];
                 $nickname = $w[1];
                 $personalID = $w[2];
                 $address = $w[3];
+                $total = $w[4];
             }
 
             if($_SESSION["receipt"] == 0){
                 $elec = $elec[0];
                 $water = $water[0];
-                $month = formatMonth(date("m"))."-".date("y");
+                $month = formatMonth($monthDB);
             }
             elseif($_SESSION["receipt"] == 1){
                 $elec = $elec[1];
                 $water = $water[1];
-                $d=strtotime("-1 Months");
-                $month = formatMonth(date("m",$d))."-".date("y");
+                $month = formatMonth($monthDB-1);
             }
             else{
                 $elec = $elec[2];
                 $water = $water[2];
-                $d=strtotime("-2 Months");
-                $month = formatMonth(date("m",$d))."-".date("y");
+                $month = formatMonth($monthDB-2);
             }
         ?>
         <main role="main">
@@ -165,8 +165,8 @@
                             <p><?php echo $_SESSION["price"]+$elecSum+$waterSum ?></p>
                         </div>
                     </div>
-                    <?php if($_SESSION["receipt"] == 0){ ?>
-                    <form>
+                    <?php if($_SESSION["receipt"] == 0 && $total != 0){ ?>
+                    <form action="payment.php">
                         <button class="btn btn-primary" style="width:20%" type="submit">Pay Now!</button>
                     </form>
                     <?php } ?>
@@ -205,13 +205,17 @@
                 <div class="container information">
                     <h1>Profile</h1>
                     <div class="row">
-                    <div class="col-md-5"><img src="Picture/user.png"></div>
-                    <div class="col-md-7" style="padding-top:60px; text-align: left;"> 
-                        <p>Name: <?php echo $name ?></p>
-                        <p>Nickname: <?php echo $nickname ?></p>
-                        <p>Personal ID: <?php echo $personalID ?></p>
-                        <p>Address: <?php echo $address ?></p>
+                        <div class="col-md-5"><img src="Picture/user.png"></div>
+                        <div class="col-md-7" style="padding-top:60px; text-align: left;"> 
+                            <p>Name: <?php echo $name ?></p>
+                            <p>Nickname: <?php echo $nickname ?></p>
+                            <p>Personal ID: <?php echo $personalID ?></p>
+                            <p>Address: <?php echo $address ?></p>
+                        </div>
                     </div>
+                    <form action="signout.php">
+                        <button id = "signout" type="submit" class="btn btn-primary" >Sign Out</button>
+                    </form>
                 </div>
             </div>
         </main>

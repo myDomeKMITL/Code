@@ -1,7 +1,7 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-image: url('../../Picture/sky.jpg');
+  background: url('../../Picture/sky.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: Tahoma;
 }
