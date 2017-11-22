@@ -1,0 +1,62 @@
+.banner .row {
+    margin-top: 2rem;
+    margin-bottom: 0;
+    background-color: #000;
+  }
+  [class*="col-"] {
+    padding-top: 1rem;
+  }
+  .space-bottom{
+      padding-bottom: 1rem;
+      text-align: center;
+      text-shadow: 1px 1px #000;
+      font-size: 16px;
+  }
+  .icon-bg{
+    background: url(../../Picture/stars.jpg) no-repeat;
+    background-size: cover;
+  }
+  #top {
+      background: url(../../Picture/banner.jpg) no-repeat;
+      background-size: cover;
+  }
+  #top p.banner{
+    text-align: right;
+    text-shadow: 1px 1px #000;
+    font-size: 40px;
+    color: white;
+    position: relative;
+    right: 5%;
+    margin-bottom: -25px;
+  }
+  #top p.left{
+    text-shadow: 1px 1px #000;
+    font-size: 40px;
+    color: white;
+    position: absolute;
+    left: 5%;
+    top: 12%;
+  }
+  div a{
+    display: block;
+    /* padding: 19px; */
+    background-size: auto;
+    text-decoration: none;
+    color: white;
+  }
+  div a:hover{
+    color: rgb(0, 217, 255);
+    text-decoration: none;
+  }
+
+  .fix-top{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 105%;
+    z-index: 10;
+  }
+
+  main{
+    margin-top: 10rem;
+  }

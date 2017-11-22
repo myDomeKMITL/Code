@@ -1,0 +1,83 @@
+body {
+  background: url('../../Picture/sky.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Tahoma;
+  margin:0;
+}
+  .information{
+    margin: 20px;
+    padding: 30px;
+    color: white;
+    background-color: rgba(102, 102, 102, 0.5);
+    text-align: center;
+    border-radius: 20px;
+  }
+  #text-left{
+    text-align: left;
+  }
+  #text-right{
+    text-align: right;
+  }
+  #text-inline{
+    display: inline;
+  }
+  .top_name{
+    color: white;
+    margin: 30px 0px;
+  }
+  .text-space{
+    padding: 10px 0px;
+    color: white;
+  }
+  input["type:number"]{
+    width:100%; margin-bottom:10px; border-radius:5px;
+  }
+
+  table, th, td {
+    border-collapse: collapse;
+    padding:20px;
+    margin:30px 5% 10px 5%;
+    border: 2px solid #333;
+  }
+  #room{
+    width:80%;
+    position:relative;
+    left:5%;
+    color: black;
+  }
+  #room th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: rgb(8, 179, 185);
+    color: white;
+  }
+  #room tr:nth-child(even), tr:nth-child(even) button{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    background-color: #cecece;
+  }
+  #room tr:nth-child(odd), tr:nth-child(odd) button{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    background-color: #ffffff;
+  }
+  #room a{
+    color:black;
+  }
+  #room button:hover{
+    color: #fff;
+    background-color: rgb(14, 145, 150);
+  }
+  #room tr:hover{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    background-color: rgb(105, 105, 105);
+    color: white;
+  }
+  button{
+    width:100%;
+  }
+  tr:hover button{
+    background-color: rgb(8, 179, 185);
+    color: #fff;
+  }
