@@ -34,13 +34,15 @@
                         
                         $mysqli = new mysqli($host,$user,$pass,$dbname);
 
-                        $sql = "SELECT `name`, `contract`,`total`  FROM `user`";
+                        $sql = "SELECT `name`, `contract`,`total`, `moveout`  FROM `user`";
                         $result =  $mysqli->query($sql);
                         $i = 0;
                         while ($w = mysqli_fetch_array($result)){
                             $renter[$i] = $w[0];
                             $contract[$i] = $w[1];
                             $total[$i] = $w[2];
+                            if($w[3] == NULL) $moveout[$i] = "None";
+                            else $moveout[$i] = $w[3];
                             $i++;
                         }
                         mysqli_close($mysqli);
@@ -53,42 +55,49 @@
                             <th>Total</th>
                             <th>Renter</th>
                             <th>Contract</th>
+                            <th>Move Out</th>
                         </tr>
                         <tr>
                             <td><button class="btn btn-hidden" type="submit" name="Room" value="1101">101</button></td>
                             <td><?php echo $total[0] ?></td>
                             <td><?php echo $renter[0] ?></td>
                             <td><?php echo $contract[0] ?></td>
+                            <td><?php echo $moveout[0] ?></td>
                         </tr>
                         <tr>
                             <td><button class="btn btn-hidden" type="submit" name="Room" value="1102">102</button></td>
                             <td><?php echo $total[1] ?></td>
                             <td><?php echo $renter[1] ?></td>
                             <td><?php echo $contract[1] ?></td>
+                            <td><?php echo $moveout[1] ?></td>
                         </tr>
                         <tr>
                             <td><button class="btn btn-hidden" type="submit" name="Room" value="1103">103</button></td>
                             <td><?php echo $total[2] ?></td>
                             <td><?php echo $renter[2] ?></td>
                             <td><?php echo $contract[2] ?></td>
+                            <td><?php echo $moveout[2] ?></td>
                         </tr>
                         <tr>
                             <td><button class="btn btn-hidden" type="submit" name="Room" value="1104">104</button></td>
                             <td><?php echo $total[3] ?></td>
                             <td><?php echo $renter[3] ?></td>
                             <td><?php echo $contract[3] ?></td>
+                            <td><?php echo $moveout[3] ?></td>
                         </tr>
                         <tr>
                             <td><button class="btn btn-hidden" type="submit" name="Room" value="1105">105</button></td>
                             <td><?php echo $total[4] ?></td>
                             <td><?php echo $renter[4] ?></td>
                             <td><?php echo $contract[4] ?></td>
+                            <td><?php echo $moveout[4] ?></td>
                         </tr>
                         <tr>
                             <td><button class="btn btn-hidden" type="submit" name="Room" value="1106">106</button></td>
                             <td><?php echo $total[5] ?></td>
                             <td><?php echo $renter[5] ?></td>
                             <td><?php echo $contract[5] ?></td>
+                            <td><?php echo $moveout[5] ?></td>
                         </tr>
                     </table>
                     </form>
