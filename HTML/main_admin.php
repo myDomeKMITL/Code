@@ -43,7 +43,7 @@
                         $dbname = "myDorm";
                         
                         $mysqli = new mysqli($host,$user,$pass,$dbname);
-                        $sql = "SELECT * FROM `announcement`";
+                        $sql = "SELECT * FROM `announcement` ORDER BY `date` DESC LIMIT 3";
                         $result =  $mysqli->query($sql);
                         $i = 0;
                         while ($w = mysqli_fetch_array($result)){
@@ -82,19 +82,17 @@
                         $result =  $mysqli->query($sql);
                         $i = 0;
                         while ($w = mysqli_fetch_array($result)){
-                            $date[$i] = $w[0];
-                            $type[$i] = $w[1];
-                            $message[$i] = $w[2];?>
+                            $id[$i] = $w[0];
+                            $date[$i] = $w[1];
+                            $room[$i] = $w[2];
+                            $message[$i] = $w[3];?>
                         <tr style="text-align:center">
-                            <form action="appealControl.php">
-                            <td><button id="check" class="btn btn-primary" type="submit" name="check" value=$i>Done</button></td>
+                            <td><a id="next" href="appealControl.php?check=<?php echo $id[$i] ?>">Check</a></td>
+                            <!-- <td><button id="check" class="btn btn-primary" type="submit">Done</button></td> -->
                             <td><?php echo $date[$i] ?></td>
-                            <td><?php echo $type[$i] ?></td>
+                            <td><?php echo $room[$i] ?></td>
                             <td><?php echo $message[$i] ?></td>
-                            <!-- <input type="hidden" name="date" value="$date[$i]"></input>
-                            <input type="hidden" name="type" value="$type[$i]"></input>
-                            <input type="hidden" name="message" value="$date[$i]"></input> -->
-                            </form>
+                            <!-- </form> -->
                         </tr>
                     <?php
                             $i++;}
