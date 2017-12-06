@@ -1,11 +1,10 @@
-
+<?php 
+  session_start();
+  if(is_null($_SESSION["check"])) $_SESSION["check"] = 0;
+?>
 <!doctype html>
 <html lang="en">
   <head>
-    <?php 
-      session_start();
-      if(is_null($_SESSION["check"])) $_SESSION["check"] = 0;
-    ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
