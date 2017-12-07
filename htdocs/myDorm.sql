@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 06, 2017 at 03:46 PM
+-- Generation Time: Dec 07, 2017 at 02:14 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `myDorm`
 --
+CREATE DATABASE IF NOT EXISTS `myDorm` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `myDorm`;
 
 -- --------------------------------------------------------
 
@@ -83,9 +85,10 @@ CREATE TABLE `appeal` (
 --
 
 INSERT INTO `appeal` (`ID`, `date`, `room`, `message`) VALUES
-(1, '2017-11-22', '102', 'Loud and Noisy'),
-(3, '2017-11-22', '106', 'Smoking'),
-(2, '2017-11-22', '105', 'Smoking');
+(2, '2017-12-07', '103', 'Smoking'),
+(4, '2017-12-07', '104', 'Loud and Noisy'),
+(1, '2017-12-07', '102', 'Loud and Noisy'),
+(3, '2017-12-07', '101', 'Table break');
 
 -- --------------------------------------------------------
 
