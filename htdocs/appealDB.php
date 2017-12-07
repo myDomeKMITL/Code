@@ -8,8 +8,7 @@
     $dbname = "myDorm";
     
     $mysqli = new mysqli($host,$user,$pass,$dbname);
-
-    $sql = "SELECT `ID` FROM `appeal`";
+    $sql = "SELECT `ID` FROM `appeal` ORDER BY `appeal`.`ID` ASC";
     $result =  $mysqli->query($sql);
     $id = 1;
     while ($w = mysqli_fetch_array($result)){
