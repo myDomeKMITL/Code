@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 22, 2017 at 12:20 PM
+-- Generation Time: Dec 06, 2017 at 03:46 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -43,6 +43,78 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`telephone`, `address`, `electricRate`, `waterRate`, `username`, `password`) VALUES
 ('081-234-5678', '123/456 Charongkrung Rd., Ladkrabang, Bangkok, Thailand 10520', 8, 18, 'admin', 'mydorm');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcement`
+--
+
+CREATE TABLE `announcement` (
+  `date` date NOT NULL,
+  `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `announcement`
+--
+
+INSERT INTO `announcement` (`date`, `type`, `message`) VALUES
+('2017-10-16', 'Internet Disable', 'Between 9:00AM-12:00PM'),
+('2017-11-06', 'Water Cut', 'Between 10:30AM-12:30PM'),
+('2017-11-27', 'Electic Cut', 'Between 10:30AM-16:30PM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appeal`
+--
+
+CREATE TABLE `appeal` (
+  `ID` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `room` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `appeal`
+--
+
+INSERT INTO `appeal` (`ID`, `date`, `room`, `message`) VALUES
+(1, '2017-11-22', '102', 'Loud and Noisy'),
+(3, '2017-11-22', '106', 'Smoking'),
+(2, '2017-11-22', '105', 'Smoking');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill`
+--
+
+CREATE TABLE `bill` (
+  `roomID` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
+  `waterNow` int(11) NOT NULL,
+  `waterPrevious` int(11) NOT NULL,
+  `waterLastest` int(11) NOT NULL,
+  `electricNow` int(11) NOT NULL,
+  `electricPrevious` int(11) NOT NULL,
+  `electricLastest` int(11) NOT NULL,
+  `currentMonth` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`roomID`, `waterNow`, `waterPrevious`, `waterLastest`, `electricNow`, `electricPrevious`, `electricLastest`, `currentMonth`) VALUES
+('1101', 0, 2, 3, 0, 132, 134, 12),
+('1102', 0, 1, 2, 0, 102, 97, 11),
+('1103', 0, 1, 2, 0, 123, 87, 12),
+('1104', 2, 2, 1, 97, 106, 113, 11),
+('1105', 0, 3, 2, 0, 132, 143, 11),
+('1106', 0, 1, 1, 0, 57, 71, 11);
 
 -- --------------------------------------------------------
 
@@ -93,7 +165,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `username`, `password`, `name`, `nickname`, `personalID`, `address`, `contract`, `picture`, `total`, `moveout`) VALUES
-('0001', 'titlez', 'ilovese', 'Jeerakitti Niamlarp', 'Title', '1234567890123', '132/36 Rama XI rd., Samsen-Nai, Phayathai, Bangkok, Thailand 10400', '2018-08-31', 'url', 0, '2017-12-27'),
+('0001', 'titlez', 'ilovese', 'Jeerakitti Niamlarp', 'Title', '1234567890123', '132/36 Rama XI rd., Samsen-Nai, Phayathai, Bangkok, Thailand 10400', '2018-08-31', 'url', 0, '2018-01-27'),
 ('0002', 'mormix', 'ilikese', 'Tuchchapol Tuanghirunvimon', 'Mix', '3210987654321', '24 soi petkasem 62/1 bangkae bangkok 10160', '2018-06-30', 'url', 0, NULL),
 ('0003', 'mew_maro', 'lazygirl', 'Mew Maro', 'Mew', '1092355555000', 'Sapran loi', '2018-02-28', 'url', 0, NULL),
 ('0004', 'nut_eieiza', 'javaboss', 'Nut TheJavaBoy', 'Nut', '1111111111111', 'ESL', '2018-03-31', 'url', 5812, NULL),
@@ -103,6 +175,12 @@ INSERT INTO `user` (`userID`, `username`, `password`, `name`, `nickname`, `perso
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bill`
+--
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`roomID`);
 
 --
 -- Indexes for table `room`
