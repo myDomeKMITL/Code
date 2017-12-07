@@ -34,8 +34,14 @@
                         
                         $mysqli = new mysqli($host,$user,$pass,$dbname);
 
+                        function getRoom(){
                         $sql = "SELECT `name`, `contract`,`total`, `moveout`  FROM `user`";
-                        $result =  $mysqli->query($sql);
+                        global $mysqli;
+                        global $renter;
+                        global $contract;
+                        global $total;
+                        global $moveout;
+                        $result = $mysqli->query($sql);
                         $i = 0;
                         while ($w = mysqli_fetch_array($result)){
                             $renter[$i] = $w[0];
@@ -45,6 +51,8 @@
                             else $moveout[$i] = $w[3];
                             $i++;
                         }
+                        }
+                        getRoom();
                         mysqli_close($mysqli);
                     ?>
                     <form action="manage_room.php" method="GET">
@@ -59,10 +67,10 @@
                         </tr>
                         <tr>
                             <td><button class="btn btn-hidden" type="submit" name="Room" value="1101">101</button></td>
-                            <td><?php echo $total[0] ?></td>
-                            <td><?php echo $renter[0] ?></td>
-                            <td><?php echo $contract[0] ?></td>
-                            <td><?php echo $moveout[0] ?></td>
+                            <td><?php global $total; echo $total[0] ?></td>
+                            <td><?php global $renter;echo $renter[0] ?></td>
+                            <td><?php global $contract;echo $contract[0] ?></td>
+                            <td><?php global $moveout;echo $moveout[0] ?></td>
                         </tr>
                         <tr>
                             <td><button class="btn btn-hidden" type="submit" name="Room" value="1102">102</button></td>

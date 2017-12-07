@@ -1,3 +1,4 @@
+<?php  session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,7 +10,6 @@
         <title>Contact Us</title>
     </head>
     <body>
-        <?php  session_start(); ?>
         <nav class="row fix-top">
             <div class="col-md-2 icon-bg">
                 <img src="Picture/icon.png" alt="logo" width="100px" height="100px" style="padding: 0 auto; position: center; display: block; margin: auto;">

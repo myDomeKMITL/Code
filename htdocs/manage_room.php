@@ -191,11 +191,10 @@
                             <p><?php echo $total = $roomPrice+$electricSum+$waterSum?></p>
                         </div>
                     </div>
-                    <?php if(date("d") >= 20 && date("d") <= 31 && $monthDB == date("m")) {?>
                     <input type="hidden" name="Room" value="<?php echo $roomid ?>"></input>
                     <button class="btn btn-primary" style="margin-bottom:1rem; width: 20%;" type="submit">Submit</button>
                     </form>
-                    <?php }}else{ ?>
+                    <?php }else{ ?>
                     <div class="row">
                         <div class="col-sm-6">
                             <p>Description</p>
@@ -228,10 +227,14 @@
             </div>
             <div class="row">
                 <div class="container information">
-                    <h1>Profile</h1>
+                    <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8"><h1>Profile</h1></div>
+                    <div class="col-md-2"><a href="signup.php">Sign Up?</a></div>
+                    </div>
                     <div class="row">
                     <div class="col-md-5"><img src="Picture/user.png"></div>
-                    <div class="col-md-7" style="padding-top:60px; text-align: left;"> 
+                    <div class="col-md-6" style="padding-top:60px; text-align: left;">
                         <p>Name: <?php echo $name ?></p>
                         <p>Nickname: <?php echo $nickname ?></p>
                         <p>Personal ID: <?php echo $personalID ?></p>

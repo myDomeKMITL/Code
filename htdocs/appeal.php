@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    if(is_null($_SESSION["success"])) $_SESSION["success"] = 0;
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -10,10 +14,6 @@
         <title>Appeal Problem</title>
     </head>
     <body>
-        <?php 
-            session_start();
-            if(is_null($_SESSION["success"])) $_SESSION["success"] = 0;
-        ?>
         <nav class="row fix-top">
             <div class="col-md-2 icon-bg">
                 <img src="Picture/icon.png" alt="logo" width="100px" height="100px" style="padding: 0 auto; position: center; display: block; margin: auto;">

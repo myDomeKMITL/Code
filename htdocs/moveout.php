@@ -1,9 +1,9 @@
+<?php session_start();
+    if(is_null($_SESSION["move-type"])) $_SESSION["move-type"] = 0;
+?>
 <!doctype html>
 <html>
     <head>
-        <?php session_start();
-            if(is_null($_SESSION["move-type"])) $_SESSION["move-type"] = 0;
-        ?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="css/code/banner.css">
