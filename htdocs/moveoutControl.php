@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     session_start();
     $date1 = date_create(date("Y-m-d")); // day now
     $date2 = date_create($_GET['date']); // day want
